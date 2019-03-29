@@ -86,7 +86,7 @@ $(function () {
             trans =trans-wcolumn;
             //判断已经滑动到底部
             if(Math.abs(trans)<kd){
-                $(".jsChapterWrapper").css('transform','translateX('+trans+'px)');
+                translateleft(trans);
             }else{
                 $('#btnLoadNextChapter>span').trigger('click') ;
             }
@@ -94,7 +94,7 @@ $(function () {
 
             trans =parseFloat(trans)+wcolumn;
             if(trans<0 || trans==0){
-                $(".jsChapterWrapper").css('transform','translateX('+trans+'px)');
+                translateleft(trans);
             }else{
                 $('#readProgPrev>span').trigger('click') ;
             }
@@ -103,6 +103,11 @@ $(function () {
 
 
     });
+    
+    function translateleft(trans) {
+        $(".jsChapterWrapper").css('transform','translateX('+trans+'px)');
+        $(".jsChapterWrapper").attr('data-left',trans);
+    }
 
     //当屏幕中间被点击时,这个是有悬浮层时的点击
     $("#pageReadOpt").click(function(event){
@@ -464,3 +469,139 @@ function base64Encode(input){
 }
 
 
+
+
+
+//滑动动能
+var flag = false;
+var cur = {
+    x:0,
+    y:0
+}
+var nx,ny,dx,dy,x,y ;
+function down(){
+    flag = true;
+    var touch ;
+    if(event.touches){
+        touch = event.touches[0];
+    }else {
+        touch = event;
+    }
+    cur.x = touch.clientX;
+    cur.y = touch.clientY;
+    dx = div2.offsetLeft;
+    dy = div2.offsetTop;
+}
+function move(){
+    if(flag){
+        var touch ;
+        if(event.touches){
+            touch = event.touches[0];
+        }else {
+            touch = event;
+        }
+        nx = touch.clientX - cur.x;
+        ny = touch.clientY - cur.y;
+        x = dx+nx;
+        y = dy+ny;
+        var left = $("#jsChapterWrapper").attr('data-left');
+        x = parseFloat(left)+parseFloat(x);
+
+        //如果为true则为左右滑动事件
+        var Slide =  $("#pageRead").hasClass('H');
+        if(Slide == true){
+            $("#jsChapterWrapper").css('transform','translateX('+x+'px)');
+        }
+
+
+        //阻止页面的滑动默认事件
+        document.addEventListener("touchmove",function(){
+            event.preventDefault();
+        },false);
+    }
+}
+
+//鼠标释放时候的函数
+function end(left){
+    flag = false;                    //鼠标释放
+    var trans =  $(".jsChapterWrapper").css('transform');
+    var reg="\\((.+?)\\)";
+    var wcolumn = parseFloat($(".H .read-section").css("column-width"))+16;
+    trans=parseFloat( trans.match(reg)[1].split(',')[4] );
+
+    var dataleft = $("#jsChapterWrapper").attr('data-left');
+
+    //如果为true则为左右滑动事件
+    var Slide =  $("#pageRead").hasClass('H');
+    //容量实际宽度
+    var kd = document.getElementById("jsChapterWrapper").scrollWidth;
+    var i = 0,j = 100;
+
+    /**
+     *      1.判断是否是左右滑动
+     *      2.判断是左滑还是右滑
+     *      3.右滑：是否大于实际宽度，是则到底页，不是再判断位于哪页
+     *      4.左滑：判断是否大于0，是则到首页，不是再判断位于哪页
+     */
+    for(i;i<j;i++) {
+        var zleft = wcolumn*(i+1);
+        if(Slide == true){
+            if(trans<dataleft){
+                if(Math.abs(zleft)>kd){
+                    var x = -wcolumn*(i);
+                    x = x.toFixed(1);
+                    $("#jsChapterWrapper").css('transform','translateX('+x+'px)');
+                    $("#jsChapterWrapper").attr('data-left',x);
+                    break;
+                }else if(Math.abs(trans)<zleft){
+                    var x = -zleft;
+                    x = x.toFixed(1);
+                    $("#jsChapterWrapper").css('transform','translateX('+x+'px)');
+                    $("#jsChapterWrapper").attr('data-left',x);
+                    break;
+                }
+            }else{
+                 if(trans>=0){
+                    var x = 0;
+                     x = x.toFixed(1);
+                    $("#jsChapterWrapper").css('transform','translateX('+x+'px)');
+                    $("#jsChapterWrapper").attr('data-left',x);
+                    break;
+                }else if(Math.abs(trans)<zleft){
+                     var zl = wcolumn*(i);
+                     var x = -zl;
+                     x = x.toFixed(1);
+                     $("#jsChapterWrapper").css('transform','translateX('+x+'px)');
+                     $("#jsChapterWrapper").attr('data-left',x);
+                     break;
+                 }
+            }
+        }
+
+
+    }
+
+}
+
+var div2 = document.getElementById("chapterContent");
+div2.addEventListener("mousedown",function(){
+    down();
+},false);
+div2.addEventListener("touchstart",function(){
+    down();
+},false);
+div2.addEventListener("mousemove",function(){
+    move();
+},false);
+div2.addEventListener("touchmove",function(){
+    move();
+},false);
+document.body.addEventListener("mouseup",function(){
+    flag = false;
+},false);
+div2.addEventListener("touchend",function(){
+    end();
+    flag = false;
+},false);
+
+//滑动功能end

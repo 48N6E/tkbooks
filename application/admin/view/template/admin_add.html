@@ -27,9 +27,13 @@
             <div class="layui-form-item">
                 <label class="layui-form-label"> <span class="x-red">*</span>权限范围</label>
                 <div class="layui-input-block">
+                    {if condition='!empty($meun)' }
                     {volist name="meun" id="vo"}
                     <input type="checkbox" name="admin_power[]" lay-skin="primary" title="{$vo}" value="{$vo}"><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>{$vo}</span><i class="layui-icon layui-icon-ok"></i></div>
                     {/volist}
+                    {else /}
+                    <p class="x-red" style="padding-top: 8px;"><i class="layui-icon">&#xe669;</i>  <em>栏目缓存已更新，请按F5刷新缓存</em></p>
+                    {/if}
                 </div>
             </div>
             <div class="layui-form-item">

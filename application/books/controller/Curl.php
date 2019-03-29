@@ -1489,7 +1489,7 @@ class Curl extends Controller
     public function writeLog($txt){
 
         $content = $txt.date('Y-m-d H:i:s');
-        $filename="test.log";
+        $filename="upbooks.log";
 
         $handle=fopen($filename,"a+");
 
@@ -1706,23 +1706,82 @@ class Curl extends Controller
 
     }
 
-    public function gonji(){
 
-        $this->writeLog('开始攻击网站，时间为：');
 
-        $url = 'http://yl002.taldtq.com/?yrid=1021';
-        for($j=1;$j<100;$j++){
-            $arr[] = $url;
+
+
+
+    /**
+     * 小说更新到最新章节
+     * 定时更新小说任务
+     */
+    public function upbooks(){
+
+        $filename = 'upbooks.log';
+
+        if (!file_exists($filename)) {
+            //第三方类库
+            Loader::import('QueryList', EXTEND_PATH);
+
+            echo '开始更新最新章节'."<br/>";
+            echo '开始时间：'.date('Y-m-d H:i:s')."<br/>";
+            $this->writeLog('小说开始更新，时间为：');
+
+            Db::table('books_cou')->where('books_status','0')->chunk(40, function($books) {
+
+                $result=array();
+                foreach ($books as $val) {
+                    $books_id = $val['books_id'];
+                    $catalog = model("Catalog");
+                    $match = $catalog->getCatalog($books_id);
+
+                    $chapter = reset($match);
+                    $chapter_name = $chapter['0'];
+                    $chapter_url = base64_decode($chapter['1']);
+
+                    //判断是否有相同的最新章节网址存在，如果有表明小说未更新，没有则表明有更新
+                    $newchapter = Db::table('books_chapter')->where('chapter_url',$chapter_url)->find();
+
+                    if(empty($newchapter)){
+                        $res = ['books_id'=>$val['books_id'],'chapter_name'=>$chapter_name,'chapter_url'=>$chapter_url];
+                        if(!empty($res)){
+
+                            $has = Db::name('chapter')->where('books_id',$val['books_id'])->find();
+                            if(!empty($has)){
+                                Db::name('chapter')->where('books_id',$val['books_id'])->update($res);
+                            }else{
+                                Db::name('chapter')->insert($res);
+                            }
+
+                            echo '《'.$val['books_name'].'》最新章节爬取成功!'."<br/>";
+
+                            //更新时间
+                            $time = date('Y-m-d',time());
+                            Db::table('books_cou')->where('books_id', $val['books_id'])->update(['books_time'=>$time]);
+
+                        }
+
+                    }else{
+                        //如果三个月未更新，则将小说改为完结状态
+                        $oldtime = date("Y-m-d", strtotime("-3 month"));
+                        if($oldtime>$val['books_time']){
+                            Db::table('books_cou')->where('books_id',$val['books_id'])->update(['books_status'=>'1']);
+                        }
+                    }
+
+
+                }
+            });
+
+            //更新完成，删除标识文件
+            unlink($filename);
+            echo '全部小说更新完成!'."<br/>";
+            echo '完成时间：'.date('Y-m-d H:i:s')."<br/><br/><br/>";
+
+        } else {
+            echo '更新程序正在运行中......';
         }
 
-        $data = array();
-        for($i=1;$i<1000000;$i++){
-            $curl = model('Curl');
-            $all = $curl->getManyUrl($arr);
-
-        }
-
-        $this->writeLog('攻击网站结束，时间为：');
 
 
     }

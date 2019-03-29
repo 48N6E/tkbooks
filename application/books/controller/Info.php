@@ -67,8 +67,10 @@ class Info extends Base
             Loader::import('QueryList', EXTEND_PATH);
             //匹配出所有章节
             $info = QueryList::Query($res,$data)->data;
-            $chapter_content = mb_convert_encoding($info[0]['content'], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
-            $chapter_name =mb_convert_encoding($info[0]['title'], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
+
+
+            $chapter_content = iconv('GBK','UTF-8',$info[0]['content']) ;
+            $chapter_name =iconv('GBK','UTF-8',$info[0]['title']) ;
         }else{
 
             $chapter_name = $data['chapter_name'];
@@ -170,8 +172,7 @@ class Info extends Base
                         Db::table('books_history')->insert($data);
                     }
 
-
-                    $chapter_content =mb_convert_encoding($match[0], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
+                    $chapter_content = iconv('GBK','UTF-8',$match[0]) ;
                     $data['content'] =$chapter_content;
                     $data['chapter_name'] = $chapter_name;
                     $data['code'] = '200';
@@ -234,7 +235,6 @@ class Info extends Base
         $catalog = model("Catalog");
         $href = parse_url($chapter_url);
         $rule = $catalog->getRule($href["host"]);
-
         //取得目录
         $match = $catalog->getCatalog($books_id);
 
@@ -261,10 +261,9 @@ class Info extends Base
             //第三方类库
             Loader::import('QueryList', EXTEND_PATH);
             //匹配出所有章节
-            $info = QueryList::Query($res,$data,'','UTF-8','GB2312')->data;
-
-            $chapter_content = mb_convert_encoding($info[0]['content'], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
-            $chapter_name =mb_convert_encoding($info[0]['title'], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
+            $info = QueryList::Query($res,$data)->data;
+            $chapter_content = iconv('GBK','UTF-8',$info[0]['content']) ;
+            $chapter_name =iconv('GBK','UTF-8',$info[0]['title']) ;
 
             $next_chapter_url =   $c_url; //章节链接
 
@@ -324,9 +323,9 @@ class Info extends Base
             //第三方类库
             Loader::import('QueryList', EXTEND_PATH);
             //匹配出所有章节
-            $info = QueryList::Query($res,$data,'','UTF-8','GB2312')->data;
-            $chapter_content = mb_convert_encoding($info[0]['content'], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
-            $chapter_name =mb_convert_encoding($info[0]['title'], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
+            $info = QueryList::Query($res,$data)->data;
+            $chapter_content = iconv('GBK','UTF-8',$info[0]['content']) ;
+            $chapter_name =iconv('GBK','UTF-8',$info[0]['title']) ;
 
             $upper_chapter_url =   $c_url; //章节链接
 

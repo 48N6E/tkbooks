@@ -12,10 +12,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <!-- 样式 S -->
 	<link rel="stylesheet" href="__CSS__/mobile_style.css">
-
-                <link rel="stylesheet" href="__CSS__/mobile_info.css">
-
-
+	<link rel="stylesheet" href="__CSS__/mobile_info.css">
+<style>
+	* { touch-action: pan-y; }
+</style>
 </head>
 <body class="{$fit.background} {if condition='$fit.time eq 1'} read-night{/if}"   style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);">
 {include file="mobile/icon" /}
@@ -70,7 +70,7 @@
 
 	<!-- 下拉加载上一章 E -->
 	<article id="chapterContent" class="read-article" style="font-size: {$fit.size};" >
-	<section class="read-section jsChapterWrapper" id="jsChapterWrapper" style="transform: translateX(0px);" >
+	<section class="read-section jsChapterWrapper" id="jsChapterWrapper" data-left="0" style="transform: translateX(0px);" >
 	<h3>{$chapter_name}</h3>
 	<p class="chapter_content">{$text}</p>
 	<div class="read-chapter-forum">
@@ -389,6 +389,30 @@ if(slide == 'Slide_lr'){
     $("#layoutH").click();
 }
 
+
+
+
+var time = 0;//初始化起始时间
+
+
+$("#pageRead").on('touchstart', '.previewImg', function(e){
+    e.stopPropagation();
+    var index=$("#pageRead").find(".image").index($(this));
+    time = setTimeout(function(){
+        showCloseImg(index);
+    }, 500);//这里设置长按响应时间
+});
+
+$("#pageRead").on('touchend', '.previewImg', function(e){
+    e.stopPropagation();
+    clearTimeout(time);
+});
+
+function showCloseImg(index){
+    var e=$("#pageRead").find(".image").eq(index);
+    $(".deleteImg").hide();
+    e.next().show();
+}
 
 
 

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>一车西小说网</title>
+    <meta name="keywords" content="一车西小说网，小说，小说网,言情小说,青春小说,玄幻小说,武侠小说,都市小说,历史小说,网络小说,小说下载，原创网络文学" />
+    <meta name="description" content="一车西小说网提供免费小说,热门小说,精品小说,好看小说,小说连载,小说排行榜,小说在线阅读,小说下载,尽请浏览稷下学宫各种玄幻小说,都市小说,言情小说,穿越小说,青春小说,武侠小说,历史小说,军事小说,科幻小说,灵异小说,游戏小说,竞技小说,同人小说" />
+    <meta name="baidu-site-verification" content="ePMpDbx1Eu" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+    <script type="text/javascript" src="/static/js/jq-c0eb42550f.1.11.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-546c1da987.lazyload.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui-019252536e.js"></script>
+    <script>document.write("<script type='text/javascript' src='/static/js/common.js?v=" + Date.now() + "'><\/script>");</script>
+    <script type="text/javascript" src="/static/js/layer/layer.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?fb88a436a9da0713ecb7533e23592412";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body class="topline">
+<div class="header-con">
+    <div class="logo">
+        <h1><img src="/static/images/logo.png"></h1>
+    </div>
+    <div class="header-logo">
+        <div class="widthfix center">
+            <div class="header ">
+                <input type="hidden" value="Index" name="cer">
+                <ul class="pc-nav clearfix">
+                    <li class="zt"><a href="/" data-controller="Index">首页</a></li>
+                    <li class="tl"><a href="/bibliotheca/index.html" data-controller="Bibliotheca" >书库</a></li>
+                    <li class="gx"><a href="/rankinglist/index.html" data-controller="Rankinglist" >排行榜</a></li>
+                    <li class="gx"><a href="/apotheosize/index.html" data-controller="Apotheosize" >封神榜</a></li>
+
+                    <li class="gx"><a href="/index/copyright.html" data-controller="Copyright" >版权声明</a></li>
+
+                    <li class="gx"><a class="daohan" href="javascript:">二次元</a></li>
+
+                    <li class="gx"><a class="daohan" href="javascript:">作者福利</a></li>
+                    <li class="zs openshelf_pc"><a href="javascript:" data-controller="Shelf" >书架</a></li>
+                    <li class="zs"><a class="daohan" href="javascript:" >作者专区</a></li>
+                </ul>
+
+
+            </div>
+
+
+
+
+
+            <div class="user-login-info" >
+                <div id="loginCon">
+
+                                            <div class="u-lgn" id="login-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span>登录</span>
+                    </div>
+
+
+                    <!--登陆框-->
+                    <div id="loginkuan" tabindex="-1" role="dialog"  class="ui-dialog login-dialog ui-widget ui-widget-content ui-front ui-resizable" aria-describedby="login" aria-labelledby="ui-id-1" style=" top: 141px; left: 347.5px; display: block; z-index: 101;display: none;">
+                        <div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix">
+                            <span id="ui-id-1" class="ui-dialog-title">&nbsp;</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"></span>Close</button>
+                        </div>
+                        <div id="login" style="" class="ui-widget ui-dialog-content ui-widget-content">
+                            <div id="login-vipjump-close" class="jump-close" style="cursor:pointer;">关闭</div>
+                            <div class="logininput">
+                                <h1 class="logo">
+                                    <img src="/static/images/logo.png">
+                                </h1>
+
+
+                                <form action="/login/login.html" method="post" enctype="multipart/form-data">
+                                    <div class="loginname">
+                                        <input type="text" name="username" placeholder="请输入用户名" value="">
+                                    </div>
+                                    <div class="loginpwd">
+                                        <input type="password" name="password" placeholder="请输入密码" value="123456">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </div>
+
+
+                                    <div class="logincheckPic">
+                                        <input type="text" class="userCheckPic" name="userCheckPic" placeholder="请输入右侧图形校验码">
+                                        <span id="checkCodePic-btn" class="checkCodePic"><img src="/captcha.html" alt="点击更新验证码"
+     onclick="this.src='/captcha.html'" /></span>
+                                    </div>
+
+
+                                    <div class="mrgT login-protocal">
+                                        <label class="ant-checkbox-wrapper">
+                                                    <span>
+                                                        <span id="login-protocal-checkbox" class="ant-checkbox login_ok">
+                                                        <span class="ant-checkbox-inner "></span>
+                                                        <input type="checkbox" class="ant-checkbox-input login_checkbox" value="off">
+                                                        </span>
+
+                                                        <span>我已阅读、了解并接受<a id="verifyXy-dl" class="pro-color">《西小说网用户服务协议》</a>、
+                                                            <a id="verifyXy-ysdl" class="pro-color">《隐私保护政策》</a></span>
+                                                    </span>
+                                        </label>
+                                    </div>
+
+
+                                    <button type="button" id="signUp" class="ant-btn ant-btn-primary ant-btn-lg ant-button-sq loginbtn disabled"  disabled="disabled">
+                                        <span>登 录</span>
+                                    </button>
+                                </form>
+                                <div class="register">
+                                    <div class="remember" style="display: inline;">
+                                        <label class="checkbox-re ant-checkbox-wrapper">
+                                                        <span id="login-remember-checkbox" class="ant-checkbox">
+                                                        <span class="ant-checkbox-inner"></span>
+                                                        <input type="checkbox" class="ant-checkbox-input" value="off">
+                                                        </span>
+                                            <span style="font-size: 14px;">记住密码</span>
+                                        </label>
+                                    </div><i>|</i>
+                                    <a href="/login/register.html">注册账号</a><i>|</i>
+                                    <a href="/login/forgetpassword.html">忘记密码?</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="backwhite" class="ui-widget-overlay ui-front" style="z-index: 100;display: none;"></div>
+                    <!--登陆框 end-->
+
+
+                                            </div>
+
+
+
+
+                <span class="secah-box glyphicon glyphicon-search" id="search_box_btn">
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--搜索框-->
+    <div class="secah-con">
+        <div class="secahdiv">
+            <input id="js_searchInput_common" type="text" class="search_input width-search" value="" maxlength="20" name="search" placeholder="搜索书名/关键字" autocomplete="off">
+            <input id="js_search_common" type="button" class="query-btn" lmk="search" lmv="搜索" urltrue="true" lmurl="#">
+        </div>
+    </div>
+    <script>
+        $(function () {
+
+            function getSearch() {
+                var search = $("input[name='search']").val();
+                if(search){
+                    window.location.href = "/Search/index/books_name/"+search;
+                }
+            }
+            $("#js_search_common").click(function () {
+                getSearch();
+            });
+
+            //回车快捷查询
+            $(".secahdiv").keypress(function (e) {
+                var keyCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+                if (keyCode == 13){
+                    getSearch();
+                }
+            });
+
+            $("#signUp").click(function () {
+                $.post('/login/login',$("form").serialize(),function (e) {
+                    layer.msg(e.msg);
+                    if(e.code==1){
+                        setTimeout(function () {
+                            window.location.href=e.url;
+                        },2000);
+                    }
+                });
+            });
+
+            //退出登陆
+            $("#loginOut").click(function () {
+                $.post('/login/loginOut','',function (e) {
+                    layer.msg(e.msg);
+                    if(e.code==1){
+                        setTimeout(function () {
+                            window.location.href=e.url;
+                        },2000);
+                    }
+                });
+            });
+
+
+            $(".daohan").click(function () {
+                layer.msg('暂未开放');
+            });
+
+
+            var cer = $("input[name='cer']").val();
+            $(".pc-nav li a").each(function(i,e){
+                var now = $(this).attr('data-controller');
+                if(cer == now){
+                    $(this).addClass('active');
+                    return false;
+                }
+
+            });
+
+        })
+    </script>
+
+</div>
+
+<!--幻灯片 -->
+<div class="carrousel" id="banner">
+    <div class="banberbox">
+        <div class="corrouselbox">
+            <ul class="txtinof"  >
+                                <li class="hero"  style="left: -2400px;">
+                    <a href="/cover/index/books_id/33829.html"><h2 class="bktitle">我有一座恐怖屋</h2>
+                        <p class="classify f16">我会修空调/科幻</p>
+                        <p class="intro f16">散发异味的灵车停在了门口，天花板传来弹珠碰撞的声音，走廊里有人来回踱步，隔壁房间好像在切割什么东西。　　卧室的门锁轻轻颤动，卫生间里水龙头已经拧紧，却还是滴答滴答个不停。　　床底下隐隐约约，似乎有个皮球滚来滚去。　　一个个沾染水渍的脚印不断在地板上浮现，正慢慢逼近。　　凌晨三点，陈歌握着菜刀躲在暖气片旁边，手里的电话刚刚拨通。　　“房东！这就是你说的晚上有点热闹？！”</p></a>
+                </li>
+
+                                <li class="hero"  style="left: -2400px;">
+                    <a href="/cover/index/books_id/33974.html"><h2 class="bktitle">万古最强宗</h2>
+                        <p class="classify f16">江湖再见/玄幻</p>
+                        <p class="intro f16">庄严肃穆的演武场上，掌门君常笑朗声道：“我铁骨铮铮派的宗旨是什么？”台下万千弟子昂首挺胸，气吞山河道：“做铁骨铮铮之人，行铁骨铮铮之事！”“OJBK，解散。”“……”众弟子一脸的懵逼。</p></a>
+                </li>
+
+                                <li class="hero"  style="left: -2400px;">
+                    <a href="/cover/index/books_id/9195.html"><h2 class="bktitle">道君</h2>
+                        <p class="classify f16">跃千愁/仙侠</p>
+                        <p class="intro f16">一个地球神级盗墓宗师，闯入修真界的故事……　　桃花源里，有歌声。　　山外青山，白骨山。　　五花马，千金裘，倚天剑。　　应我多情，啾啾鬼鸣，美人薄嗔。　　天地无垠，谁家旗鼓，碧落黄泉，万古高楼。　　为义气争雄！　　为乱世争霸！　　你好，仙侠！</p></a>
+                </li>
+
+                                <li class="hero"  style="left: -2400px;">
+                    <a href="/cover/index/books_id/10722.html"><h2 class="bktitle">修真聊天群</h2>
+                        <p class="classify f16">圣骑士的传说/都市</p>
+                        <p class="intro f16">某天，宋书航意外加入了一个仙侠中二病资深患者的交流群，里面的群友们都以‘道友’相称，群名片都是各种府主、洞主、真人、天师。连群主走失的宠物犬都称为大妖犬离家出走。整天聊的是炼丹、闯秘境、炼功经验啥的。突然有一天，潜水良久的他突然现……群里每一个群员，竟然全部是修真者，能移山倒海、长生千年的那种！啊啊啊啊，世界观在一夜间彻底崩碎啦！</p></a>
+                </li>
+
+                                <li class="hero"  style="left: -2400px;">
+                    <a href="/cover/index/books_id/12652.html"><h2 class="bktitle">超神机械师</h2>
+                        <p class="classify f16">齐佩甲/游戏</p>
+                        <p class="intro f16">韩萧，《星海》骨灰级代练，被来自东（）方的神秘力量扔进穿越大军，携带玩家面板变成，回到《星海》公测之前，毅然选择难度最高的机械系。　　战舰列队纵横星海，星辰机甲夭矫如龙，幽能炮毁天灭地，还有无边无际的机械大军，静静待在随身仓库里。　　一人，即是军团！　　如果不是玩家出现，本书就是正经严肃的穿越异界题材……　　作为，正常对玩家功能一应俱全……发布任务？好感度调节？传授技能？为什么会有选择成为玩家跟随者选项啊，把这项给我抠掉！哦，可以解除的啊。　　电竞第一美女？只想学技能？告辞，洒家卖身不卖艺！　　哎等等，这群玩家我怎么都认识啊！　　得，现实世界也回到了十年前。　　群：</p></a>
+                </li>
+
+                                <li class="hero"  style="left: -2400px;">
+                    <a href="/cover/index/books_id/33207.html"><h2 class="bktitle">海贼盖伦</h2>
+                        <p class="classify f16">河流之汪/同人</p>
+                        <p class="intro f16">【这是海贼同人】我，盖伦，有系统。此外，书名其实是《海贼王世界里的正义骑士、能抗能打大宝剑、德玛西亚之力盖伦》的缩写。</p></a>
+                </li>
+
+                            </ul>
+        </div>
+        <div class="thumbnail">
+            <ul class="smallul">
+                                <li class="on" >
+                    <img   src="/static/images/cover.jpg" data-src="/static/images/books_img/47745s.jpg"  width="48" style="width: 90px; margin-top: 0px; display: inline-block;">
+                </li>
+                                <li >
+                    <img src="/static/images/cover.jpg" data-src="/static/images/books_img/48240s.jpg" width="48" style="width: 48px; margin-top: 30px; display: inline-block;">
+                </li>
+                                <li >
+                    <img src="/static/images/cover.jpg" data-src="/static/images/books_img/7204s.jpg" width="48" style="width: 48px; margin-top: 30px; display: inline-block;">
+                </li>
+                                <li >
+                    <img src="/static/images/cover.jpg" data-src="/static/images/books_img/5bbaeaa6bef1f.jpg" width="48" style="width: 48px; margin-top: 30px; display: inline-block;">
+                </li>
+                                <li >
+                    <img src="/static/images/cover.jpg" data-src="/static/images/books_img/14371s.jpg" width="48" style="width: 48px; margin-top: 30px; display: inline-block;">
+                </li>
+                                <li >
+                    <img src="/static/images/cover.jpg" data-src="/static/images/books_img/5b87b77e51240.jpg" width="48" style="width: 48px; margin-top: 30px; display: inline-block;">
+                </li>
+                
+
+
+            </ul>
+
+        </div>
+        <a id="lbl_btn" class="caleft" href="javascript:void(0)"></a>
+        <a id="lbr_btn" class="caright" href="javascript:void(0)"></a>
+    </div>
+</div>
+
+<!--榜单-->
+<div class="pcbox">
+    <div class="channel clearfix">
+        <div class="channelbox" id="manbd">
+            <div class="chatitle">
+                <h2>人气榜单</h2>
+            </div>
+            <ul class="chalistbox" lmk="indexnpbd" lmv="男频榜单">
+
+
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/1.html">
+                        <em class="chan">1.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16595s.jpg"  alt="">
+                        <h3>天王时代</h3>
+                        <p>纯洁的胖子/游戏</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/2.html">
+                        <em class="chan">2.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16591s.jpg"  alt="">
+                        <h3>巨龙倒计时续</h3>
+                        <p>繁夜/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/3.html">
+                        <em class="chan">3.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16590s.jpg"  alt="">
+                        <h3>凌天逆神</h3>
+                        <p>闲影雪/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/4.html">
+                        <em class="chan">4.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16588s.jpg"  alt="">
+                        <h3>火照鬼擎传</h3>
+                        <p>小韵和小云/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/5.html">
+                        <em class="chan">5.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16585s.jpg"  alt="">
+                        <h3>超级无敌预判系统</h3>
+                        <p>傻傻的萝卜/玄幻</p>
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="chamove hide">
+                <a href="#">更多&gt;</a>
+            </div>
+        </div>
+        <div class="channelbox" id="wombd">
+            <div class="chatitle">
+                <h2>热销榜单</h2>
+            </div>
+            <ul class="chalistbox" lmk="indexgpbd" lmv="女频榜单">
+
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/47.html">
+                        <em class="chan">1.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16360s.jpg" alt="">
+                        <h3>超神话降临</h3>
+                        <p>铁卒/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/48.html">
+                        <em class="chan">2.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16359s.jpg" alt="">
+                        <h3>海贼之雷神降临</h3>
+                        <p>焉得羽翼兮/其他</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/49.html">
+                        <em class="chan">3.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16344s.jpg" alt="">
+                        <h3>怪病男巫</h3>
+                        <p>小叁和弦/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/50.html">
+                        <em class="chan">4.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16342s.jpg" alt="">
+                        <h3>镇天圣祖</h3>
+                        <p>思绪飞扬/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/51.html">
+                        <em class="chan">5.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16338s.jpg" alt="">
+                        <h3>至高</h3>
+                        <p>青痕十一少/玄幻</p>
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="chamove hide">
+                <a href="#">更多&gt;</a>
+            </div>
+        </div>
+        <div class="channelbox" id="typebd">
+            <div class="chatitle">
+                <h2>分类推荐榜</h2>
+            </div>
+            <ul class="chalistbox" lmk="indexflbd" lmv="分类推荐榜">
+
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/15.html">
+                        <em class="chan">1.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16513s.jpg" alt="">
+                        <h3>九界毒尊</h3>
+                        <p>紫羽枫/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/16.html">
+                        <em class="chan">2.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16500s.jpg" alt="">
+                        <h3>龙脉君王</h3>
+                        <p>北地的极光/奇幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/17.html">
+                        <em class="chan">3.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16497s.jpg" alt="">
+                        <h3>卡门使徒</h3>
+                        <p>葡萄喝酒/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/18.html">
+                        <em class="chan">4.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16496s.jpg" alt="">
+                        <h3>元古剑魂</h3>
+                        <p>淩宇/玄幻</p>
+                    </a>
+                </li>
+                                <li class="clearfix">
+                    <a href="/cover/index/books_id/19.html">
+                        <em class="chan">5.</em>
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16494s.jpg" alt="">
+                        <h3>灵域神帝</h3>
+                        <p>青青小白菜/玄幻</p>
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="chamove hide">
+                <a href="#">更多&gt;</a>
+            </div>
+        </div>
+        <div class="channelbox wbox" id="zuibd">
+            <div class="chatitle">
+                <h2>强力推荐榜</h2>
+            </div>
+            <ul class="chalastbox" lmk="indexqlbd" lmv="强力推荐榜">
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/20.html">
+                        <em class="chan">1.</em>
+                        <h3 class="lasth3">重生之证道混元</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/21.html">
+                        <em class="chan">2.</em>
+                        <h3 class="lasth3">海贼之暗黑大法师</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/22.html">
+                        <em class="chan">3.</em>
+                        <h3 class="lasth3">这个系统有点毒</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/23.html">
+                        <em class="chan">4.</em>
+                        <h3 class="lasth3">笔仙在上</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/24.html">
+                        <em class="chan">5.</em>
+                        <h3 class="lasth3">天庭小主播</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/25.html">
+                        <em class="chan">6.</em>
+                        <h3 class="lasth3">尸加工</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/26.html">
+                        <em class="chan">7.</em>
+                        <h3 class="lasth3">圣者的遗产</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/27.html">
+                        <em class="chan">8.</em>
+                        <h3 class="lasth3">天际魔法录</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/28.html">
+                        <em class="chan">9.</em>
+                        <h3 class="lasth3">至尊神墓系统</h3>
+                    </a>
+                </li>
+                                <li class="clearfix" lmk="indexqlbd-sj" lmv="书籍" urltrue="true" lmurl="#">
+                    <a href="/cover/index/books_id/29.html">
+                        <em class="chan">10.</em>
+                        <h3 class="lasth3">裁决圣道</h3>
+                    </a>
+                </li>
+                
+
+            </ul>
+            <div class="chamove hide">
+                <a href="#">更多&gt;</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--分类-->
+<div class="batchtotal" id="typetab1">
+    <table class="classtable" width="100%" border="0" cellspacing="0" lmk="indexfl" lmv="分类">
+
+        <tbody>
+        <tr>
+
+            <td lmk="indexfl-10002" lmv="玄幻" urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/1.html" class="divhei" style="background:url(../static/images/class_1.jpg);background-size: cover;">
+                    <h3>玄幻</h3>
+                </a>
+            </td>
+
+
+            <td lmk="indexfl-10006" lmv="都市" urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/5.html" class="divhei" style="background:url(../static/images/class_2.jpg);background-size: cover;">
+                    <h3>都市</h3>
+                </a>
+            </td>
+
+
+            <td lmk="indexfl-10008" lmv="历史" urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/6.html" class="divhei" style="background:url(../static/images/class_3.jpg);background-size: cover;">
+                    <h3>历史</h3>
+                </a>
+            </td>
+
+
+            <td lmk="indexfl-10010" lmv="悬疑" urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/11.html" class="divhei" style="background:url(../static/images/class_4.jpg);background-size: cover;">
+                    <h3>灵异</h3>
+                </a>
+            </td>
+
+        </tr>
+        <tr>
+
+
+            <td lmk="indexfl-10011"  urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/10.html" class="divhei" style="background:url(../static/images/class_5.jpg);background-size: cover;"> <h3>科幻</h3>
+            </a></td>
+
+
+            <td lmk="indexfl-10016"  urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/2.html" class="divhei" style="background:url(../static/images/class_6.jpg);background-size: cover;"> <h3>奇幻魔法</h3>
+            </a></td>
+
+
+            <td lmk="indexfl-10018"  urltrue="true" lmurl="#" rowspan="2">
+                <a href="/bibliotheca/index/type_id/7.html" class="rspan" style="background:url(../static/images/class_7.jpg);background-size: cover;"> <h3>军事</h3>
+            </a></td>
+
+
+            <td lmk="indexfl-10019"  urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/12.html" class="divhei" style="background:url(../static/images/class_8.jpg);background-size: cover;"> <h3>衍生同人</h3>
+            </a></td>
+
+
+        </tr>
+        <tr>
+            <td lmk="indexfl-10020"  urltrue="true" lmurl="#" colspan="2">
+                <a href="/bibliotheca/index/type_id/8.html" class="divhei" style="background:url(../static/images/class_9.jpg);background-size: cover;">
+                    <h3>游戏竞技</h3>
+                </a>
+            </td>
+
+
+            <td lmk="indexfl-10021"  urltrue="true" lmurl="#">
+                <a href="/bibliotheca/index/type_id/4.html" class="divhei" style="background:url(../static/images/class_10.jpg);background-size: cover;">
+                    <h3>武侠仙侠</h3>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--男频精选-->
+<div class="manbox" id="manwrap" lmk="indexnpjx" lmv="男频精选">
+    <div class="mantit">
+        <h2>热门精选</h2>
+    </div>
+    <div class="rollbox" id="manlb">
+        <div class="hotseam">
+            <ul class="count" nowthis="1">
+
+                                <li class="">
+                    <a href="/cover/index/books_id/44.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16382s.jpg" width="120" height="160">
+                        <h3>神魔术师</h3>
+                        <p>夏天吃西瓜吧/奇幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/45.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16374s.jpg" width="120" height="160">
+                        <h3>工业之动力帝国</h3>
+                        <p>滿楼红袖招/其他</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/46.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16372s.jpg" width="120" height="160">
+                        <h3>绝世暴君</h3>
+                        <p>帝鸣/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/47.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16360s.jpg" width="120" height="160">
+                        <h3>超神话降临</h3>
+                        <p>铁卒/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/48.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16359s.jpg" width="120" height="160">
+                        <h3>海贼之雷神降临</h3>
+                        <p>焉得羽翼兮/其他</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/49.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16344s.jpg" width="120" height="160">
+                        <h3>怪病男巫</h3>
+                        <p>小叁和弦/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/50.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16342s.jpg" width="120" height="160">
+                        <h3>镇天圣祖</h3>
+                        <p>思绪飞扬/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/51.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16338s.jpg" width="120" height="160">
+                        <h3>至高</h3>
+                        <p>青痕十一少/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/52.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16336s.jpg" width="120" height="160">
+                        <h3>九州套路王</h3>
+                        <p>烈日吹冰/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/53.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16329s.jpg" width="120" height="160">
+                        <h3>龙皇妖帝</h3>
+                        <p>忧郁的老猫/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/54.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16327s.jpg" width="120" height="160">
+                        <h3>不朽龙帝</h3>
+                        <p>被罚站的豆豆/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/55.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16318s.jpg" width="120" height="160">
+                        <h3>龙印神皇</h3>
+                        <p>我是大乌龟/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/56.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16313s.jpg" width="120" height="160">
+                        <h3>狂帝仙君</h3>
+                        <p>晨少/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/65.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16288s.jpg" width="120" height="160">
+                        <h3>九阳丹圣(合作)</h3>
+                        <p>浩野(合作)/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/66.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16287s.jpg" width="120" height="160">
+                        <h3>刀之大帝(合作)</h3>
+                        <p>九臼(合作)/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/67.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16286s.jpg" width="120" height="160">
+                        <h3>人王传(合作)</h3>
+                        <p>二手玫瑰(合作)/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/68.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16280s.jpg" width="120" height="160">
+                        <h3>怒军(合作)</h3>
+                        <p>左手笔墨(合作)/玄幻</p>
+                    </a>
+                </li>
+                            <li class="">
+                    <a href="/cover/index/books_id/69.html">
+                        <img src="/static/images/cover.jpg" data-src="/static/images/books_img/16279s.jpg" width="120" height="160">
+                        <h3>一剑邪尊(合作)</h3>
+                        <p>笑苍生(合作)/玄幻</p>
+                    </a>
+                </li>
+            
+
+            </ul>
+
+        </div>
+
+        <a class="manlbtn slick-prev" href="javascript:void(0)"></a>
+        <a class="manrbtn slick-next" href="javascript:void(0)"></a>
+
+    </div>
+
+    <div class="mantable clearfix">
+                <div class="manlist" id="mt1">
+            <dl>
+                <dt><h2>仙侠</h2></dt>
+                <dd>
+                    <ul>
+                                                <li ><a href="/cover/index/books_id/545.html">洪荒五行真人</a></li>
+                                                <li ><a href="/cover/index/books_id/911.html">踏碎仙河</a></li>
+                                                <li ><a href="/cover/index/books_id/1392.html">末世重生之女修士</a></li>
+                                                <li ><a href="/cover/index/books_id/1507.html">师徒养成攻略</a></li>
+                                                <li ><a href="/cover/index/books_id/2069.html">仙都</a></li>
+                                            </ul>
+
+                </dd>
+
+            </dl>
+            <div class="chamove">
+                <a href="/bibliotheca/index/type_id/4.html">更多&gt;</a>
+            </div>
+        </div>
+                <div class="manlist" id="mt1">
+            <dl>
+                <dt><h2>都市</h2></dt>
+                <dd>
+                    <ul>
+                                                <li ><a href="/cover/index/books_id/13.html">活在民国</a></li>
+                                                <li ><a href="/cover/index/books_id/92.html">奥丁海</a></li>
+                                                <li ><a href="/cover/index/books_id/145.html">清穿守则</a></li>
+                                                <li ><a href="/cover/index/books_id/190.html">草根帝</a></li>
+                                                <li ><a href="/cover/index/books_id/230.html">宠妾作死日常</a></li>
+                                            </ul>
+
+                </dd>
+
+            </dl>
+            <div class="chamove">
+                <a href="/bibliotheca/index/type_id/5.html">更多&gt;</a>
+            </div>
+        </div>
+                <div class="manlist" id="mt1">
+            <dl>
+                <dt><h2>历史</h2></dt>
+                <dd>
+                    <ul>
+                                                <li ><a href="/cover/index/books_id/1322.html">战狼血帝</a></li>
+                                                <li ><a href="/cover/index/books_id/1641.html">鹰扬三国</a></li>
+                                                <li ><a href="/cover/index/books_id/3012.html">替天行盗</a></li>
+                                                <li ><a href="/cover/index/books_id/3879.html">崛起之新帝国时代</a></li>
+                                                <li ><a href="/cover/index/books_id/5547.html">楚风</a></li>
+                                            </ul>
+
+                </dd>
+
+            </dl>
+            <div class="chamove">
+                <a href="/bibliotheca/index/type_id/6.html">更多&gt;</a>
+            </div>
+        </div>
+                <div class="manlist" id="mt1">
+            <dl>
+                <dt><h2>军事</h2></dt>
+                <dd>
+                    <ul>
+                                                <li ><a href="/cover/index/books_id/2604.html">超级军霸</a></li>
+                                                <li ><a href="/cover/index/books_id/2873.html">血魂1937</a></li>
+                                                <li ><a href="/cover/index/books_id/4045.html">1899大时代</a></li>
+                                                <li ><a href="/cover/index/books_id/4072.html">统御全球</a></li>
+                                                <li ><a href="/cover/index/books_id/4164.html">重生之铁血军阀</a></li>
+                                            </ul>
+
+                </dd>
+
+            </dl>
+            <div class="chamove">
+                <a href="/bibliotheca/index/type_id/7.html">更多&gt;</a>
+            </div>
+        </div>
+            </div>
+</div>
+
+
+<script>
+    $(function () {
+        $(".caright").click();
+
+        //热门精选
+        lunpo($(".hotseam>ul>li"),$(".slick-next"),$(".slick-prev"));
+
+    });
+
+
+</script>
+
+
+<!--图片懒加载-->
+<script type="text/javascript" src="/static/js/underscore.js"></script>
+<script>
+    // 注意: 需要引入jQuery和underscore
+    $(function() {
+        // 获取window的引用:
+        var $window = $(window);
+        // 获取包含data-src属性的img，并以jQuery对象存入数组:
+        var lazyImgs = _.map($('img[data-src]').get(), function (i) {
+            return $(i);
+        });
+        // 定义事件函数:
+        var onScroll = function() {
+            // 获取页面滚动的高度:
+            var wtop = $window.scrollTop();
+            // 判断是否还有未加载的img:
+            if (lazyImgs.length > 0) {
+                // 获取可视区域高度:
+                var wheight = $window.height();
+                // 存放待删除的索引:
+                var loadedIndex = [];
+                // 循环处理数组的每个img元素:
+                _.each(lazyImgs, function ($i, index) {
+                    // 判断是否在可视范围内:
+                    if ($i.offset().top - wtop < wheight) {
+                        // 设置src属性:
+                        $i.attr('src', $i.attr('data-src'));
+                        // 添加到待删除数组:
+                        loadedIndex.unshift(index);
+                    }
+                });
+                // 删除已处理的对象:
+                _.each(loadedIndex, function (index) {
+                    lazyImgs.splice(index, 1);
+                });
+            }
+        };
+        // 绑定事件:
+        $window.scroll(onScroll);
+        // 手动触发一次:
+        onScroll();
+    });
+</script>
+
+<div class="footer">
+    <div class="footbox">
+
+        <div class="footbox-info clearfix">
+            <div class="left">
+                <a href="/index/about.html">关于我们</a><i>|</i><a href="/index/privacy.html">隐私条款</a><i>|</i><a href="/index/employ.html">申请收录</a><i>|</i><a href="/index/copyright.html">版权声明</a>
+            </div>
+            <div class="right">一车西小说网有限公司    版权所有</div>
+        </div>
+        <div class="footbox-info haveimg footbox-p clearfix" style="border-top: 1px solid #494949;">
+            <div class="left">起点中文网&nbsp;&nbsp;&nbsp;言情小说吧</div>
+            <div class="right">
+                <a href="javascript:;" target="_blank"><img class="bottom_icon" src="/static/images/bottom_icon.png" /></a>
+                <a href="http://www.miitbeian.gov.cn" target="_blank"> 粤ICP备18074811号-1</a>
+                <span>增值电信业务许可证&nbsp;&nbsp;&nbsp;&nbsp; 粤ICP备18074811号-1</span>
+                <span>网络文化经营许可证&nbsp;&nbsp;&nbsp;&nbsp; 粤ICP备18074811号-1</span>
+            </div>
+        </div>
+
+        <div class="footbox-info footbox-p clearfix" style="border-top: 1px solid #494949;">
+            <div class="left" >为保证更好的浏览效果，请使用IE9以上或其他主流浏览器访问</div>
+            <div class="right">
+                <span>地址：中国（上海）自由贸易试验区碧波路690号6号楼101、201室</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话：021-61870500</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
