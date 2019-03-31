@@ -113,7 +113,7 @@ class Catalog extends Model
             $carr = array_reverse($carr);
 
             //再次去重一遍
-            $match = array_unique_fb($carr);
+            $match = empty($carr) ? $carr : array_unique_fb($carr);
             cache($books_id.'_catalog', $match, 3600);
         }
         return $match;
