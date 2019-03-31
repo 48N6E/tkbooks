@@ -148,12 +148,6 @@ Class Books extends Base{
                 $result = ['books_name'=>$books_name,'books_author'=>$author,'books_synopsis'=>$synopsis,'books_time'=>$time,'books_img'=>$imgName,'books_type'=>$type_id,'books_status'=>'0','books_url'=>$href];
 
 
-
-               $books_id = Db::table('books_cou')->insertGetId($result);
-
-
-
-
                 $chapter_all = array(
                     'text'=>array($rule['chapter_name'],'text'),
                     'href'=>array($rule['chapter_url'],'href'),
@@ -161,29 +155,34 @@ Class Books extends Base{
                 //匹配出所有章节
                 $match = QueryList::Query($all,$chapter_all)->data;
 
-                //去除前面重复的几个最新章节
-               // array_splice($match,0,9);
-                $match = $this->array_unique_fb($match);
+                if(!empty($match)){
+                    //去除前面重复的几个最新章节
+                    // array_splice($match,0,9);
+                    $match = $this->array_unique_fb($match);
 
+                    foreach ($match as $key=>$val){
+                        //使用该函数对结果进行转码
+                        $chapter[$key]['text'] = mb_convert_encoding($val[0], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
+                        $chapter[$key]['href'] = $val[1];
 
-                foreach ($match as $key=>$val){
-                    //使用该函数对结果进行转码
-                    $chapter[$key]['text'] = mb_convert_encoding($val[0], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
-                    $chapter[$key]['href'] = $val[1];
+                    }
 
+                    $end_chapter = reset($chapter);
+
+                    $books_id  = Db::table('books_cou')->insertGetId($result);
+                    $chapter_data = ['books_id'=>$books_id,'chapter_name'=>$end_chapter['text'],'chapter_url'=>$end_chapter['href']];
+
+                    Db::table('books_chapter')->insert($chapter_data);
+
+                    if($books_id){
+                        return $this->success('入库成功');
+                    }else{
+                        return $this->error('入库失败');
+                    }
+                }else{
+                    return $this->error('入库失败,章节为空');
                 }
 
-                $end_chapter = end($chapter);
-
-              $chapter_data = ['books_id'=>$books_id,'chapter_name'=>$end_chapter['text'],'chapter_url'=>$end_chapter['href']];
-
-              Db::table('books_chapter')->insert($chapter_data);
-
-              if($books_id){
-                  return $this->success('入库成功');
-              }else{
-                  return $this->error('入库失败');
-              }
 
 
             }
