@@ -1714,18 +1714,20 @@ class Curl extends Controller
     /**
      * 小说更新到最新章节
      * 定时更新小说任务
+     * 不要把每条更记录到writeLog里，这样运行速度很慢
      */
     public function upbooks(){
 
         $filename = 'upbooks.log';
 
         if (!file_exists($filename)) {
+
             //第三方类库
             Loader::import('QueryList', EXTEND_PATH);
 
-            echo '开始更新最新章节'."<br/>";
-            echo '开始时间：'.date('Y-m-d H:i:s')."<br/>";
+
             $this->writeLog('小说开始更新，时间为：');
+
 
             Db::table('books_cou')->where('books_status','0')->chunk(40, function($books) {
 
@@ -1734,6 +1736,7 @@ class Curl extends Controller
                     $books_id = $val['books_id'];
                     $catalog = model("Catalog");
                     $match = $catalog->getCatalog($books_id);
+
 
                     $chapter = reset($match);
                     $chapter_name = $chapter['0'];
@@ -1752,9 +1755,6 @@ class Curl extends Controller
                             }else{
                                 Db::name('chapter')->insert($res);
                             }
-
-                            echo '《'.$val['books_name'].'》最新章节爬取成功!'."<br/>";
-
                             //更新时间
                             $time = date('Y-m-d',time());
                             Db::table('books_cou')->where('books_id', $val['books_id'])->update(['books_time'=>$time]);
@@ -1775,14 +1775,12 @@ class Curl extends Controller
 
             //更新完成，删除标识文件
             unlink($filename);
-            echo '全部小说更新完成!'."<br/>";
-            echo '完成时间：'.date('Y-m-d H:i:s')."<br/><br/><br/>";
 
         } else {
             echo '更新程序正在运行中......';
         }
 
-
+            echo "<br />".'全部章节更新完成';die;
 
     }
 
