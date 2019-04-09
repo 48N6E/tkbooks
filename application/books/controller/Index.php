@@ -23,12 +23,12 @@ class Index extends Base
 
     public function index(){
 
-        //如果未登陆，跳转到静态首页
-        $user_name = session('user_name');
-        if(empty($user_name)){
-            $htmlpath = APP_PATH.'books/view/static/index.html';
+        //如果有静态化首页，则跳到静态化首页
+        $mobile = session('mobile');
+        if( empty($mobile)){
+            $htmlpath = APP_PATH.'books/view/template/homeCache.html';
             if(file_exists ($htmlpath)){
-                return  $this->fetch('static/index');
+                return  $this->fetch('template/homeCache');
             }
         }
 
@@ -56,7 +56,7 @@ class Index extends Base
         $this->view->all = $all;
         $this->view->types = $types;
 
-        $mobile = session('mobile');
+
         if($mobile){
             //手机幻灯片
             $module = Db::table('books_module')->where('module_key','slide_wap')->value('module_data');
@@ -389,6 +389,11 @@ print_r($data);die;
         return $this->fetch('template/employ');
     }
 
+
+    public function isLogin(){
+        $user_name = session('user_name');
+        return $user_name;
+    }
 
 
 

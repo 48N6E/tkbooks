@@ -16,6 +16,11 @@ Class Login extends Controller{
             $this->redirect('index/index');
         }
 
+        $res = Db::table('books_module')->where('module_key','settings')->find();
+        $data = json_decode($res['module_data'],true);
+        $name = !empty($data['name']) ? $data['name'] : '' ;
+
+        $this->view->name = $name;
         return $this->fetch('template/login');
     }
 

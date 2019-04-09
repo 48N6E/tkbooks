@@ -296,23 +296,27 @@ Class Rule extends Base
                 //匹配出所有章节
                 $match = QueryList::Query($all,$chapter_all)->data;
 
-                //去除前面重复的几个最新章节
-                $match = array_unique_fb($match);
+                if(!empty($match)){
+                    //去除前面重复的几个最新章节
+                    $match = array_unique_fb($match);
 
 
-                foreach ($match as $key=>$val){
+                    foreach ($match as $key=>$val){
 
-                    //使用该函数对结果进行转码
-                    $chapter[$key]['text'] = mb_convert_encoding($val[0], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
-                    $chapter[$key]['href'] = correct_url($href, $val[1]);
+                        //使用该函数对结果进行转码
+                        $chapter[$key]['text'] = mb_convert_encoding($val[0], 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
+                        $chapter[$key]['href'] = correct_url($href, $val[1]);
 
+                    }
+
+                    $end_chapter = reset($chapter);
+
+                    $chapter_data = ['books_id'=>$books_id,'chapter_name'=>$end_chapter['text'],'chapter_url'=>$end_chapter['href']];
+
+                    Db::table('books_chapter')->insert($chapter_data);
                 }
 
-                $end_chapter = end($chapter);
 
-                $chapter_data = ['books_id'=>$books_id,'chapter_name'=>$end_chapter['text'],'chapter_url'=>$end_chapter['href']];
-
-                Db::table('books_chapter')->insert($chapter_data);
             }
 
 

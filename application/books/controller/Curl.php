@@ -1733,6 +1733,10 @@ class Curl extends Controller
 
                 $result=array();
                 foreach ($books as $val) {
+                    //记录
+                    $txt = $val['books_name'].'更新完成,时间为：';
+                    $this->writeLog($txt);
+
                     $books_id = $val['books_id'];
                     $catalog = model("Catalog");
                     $match = $catalog->getCatalog($books_id);

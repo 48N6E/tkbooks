@@ -131,13 +131,13 @@ Class Settings extends Base
         $address = array('首页','首页设置','首页缓存');
         $this->view->address = $address;
 
-        $file = APP_PATH.'books/view/static/index.html';
+        $file = APP_PATH.'books/view/template/homeCache.html';
         if(request()->isPost()){
             $home_switch = input('post.home_switch');
             if($home_switch == 'true'){
                 $request = Request::instance();
                 $home = $request->domain();
-                $res = $this->buildHtml('index',APP_PATH.'books/view/static/',$home);
+                $res = $this->buildHtml('homeCache',APP_PATH.'books/view/template/',$home);
                if(empty($res)){
                    return $this->success('首页静态化成功');
                }else{
@@ -167,15 +167,20 @@ Class Settings extends Base
         return $this->fetch('template/settings_home_cache');
     }
 
+    /**
+     * 更新首页静态化缓存
+     */
     public function editHome(){
-        $file = APP_PATH.'books/view/static/index.html';
+
+        $file = APP_PATH.'books/view/template/homeCache.html';
         if(!file_exists ($file)){
             return $this->error("请先开启首页静态化");
         }
-
+        //删除旧页面
+        unlink($file);
         $request = Request::instance();
         $home = $request->domain();
-        $res = $this->buildHtml('index',APP_PATH.'books/view/static/',$home);
+        $res = $this->buildHtml('homeCache',APP_PATH.'books/view/template/',$home);
         if(empty($res)){
             return $this->success('更新成功');
         }else{

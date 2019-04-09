@@ -31,6 +31,12 @@ class Base extends Controller {
         $admin = Db::table('books_admin')->where('admin_id',$admin_id)->find() ;
         $this->view->arr = $admin['admin_power'];
 
+        $res = Db::table('books_module')->where('module_key','settings')->find();
+        $data = json_decode($res['module_data'],true);
+        $name = !empty($data['name']) ? $data['name'] : '' ;
+
+        $this->view->name = $name;
+
 
     }
 }
