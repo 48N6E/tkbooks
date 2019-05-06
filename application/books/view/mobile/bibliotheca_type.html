@@ -5,7 +5,7 @@
     <a href="javascript:history.go(-1)" class="header-back jsBack">
         <svg class="icon icon-arrow-l"><title>返回</title><use xlink:href="#icon-arrow-l"></use></svg>
     </a>
-    <h1 class="header-back-title">{present name="name"}全部{else /}{$type[$type_id]}{/present}</h1>
+    <h1 class="header-back-title">{empty name="$type_id"}全部{else /}{$type[$type_id]}{/empty}</h1>
     <div class="header-operate">
         <a id="openSearchPopup" href="javascript:" class="icon icon-search" title="搜索">
             <svg><use xlink:href="#icon-search"></use></svg>
@@ -19,17 +19,17 @@
 <div class="module module-merge">
 
     <!-- 筛选 -->
-    <div class="search-filter">
-        <div id="orders" class="module-filter-header sort-order-switcher category-detail-orders" style="">
-            <a href="javascript:;" class="btn-tag active jsTag" data-value="0" role="tab" aria-selected="true">综合</a>
-            <!--<a href="javascript:;" class="btn-tag jsTag" data-value="9" role="tab">字数</a><a href="javascript:;" class="btn-tag jsTag" data-value="17" role="tab">点击</a><a href="javascript:;" class="btn-tag jsTag" data-value="3" role="tab">时间</a>-->
+    <!--<div class="search-filter">-->
+        <!--&lt;!&ndash;<div id="orders" class="module-filter-header sort-order-switcher category-detail-orders" style="">&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<a href="javascript:;" class="btn-tag active jsTag" data-value="0" role="tab" aria-selected="true">综合</a>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<a href="javascript:;" class="btn-tag jsTag" data-value="9" role="tab">字数</a><a href="javascript:;" class="btn-tag jsTag" data-value="17" role="tab">点击</a><a href="javascript:;" class="btn-tag jsTag" data-value="3" role="tab">时间</a>&ndash;&gt;&ndash;&gt;-->
 
-            <!--<a href="#&amp;asideFilter" id="asideFilterTrigger" class="module-filter-icon" data-rel="asideFilter" role="button" aria-haspopup="true">-->
-                <!--<svg class="icon icon-filter"><use xlink:href="#icon-filter"></use></svg>-->
-                <!--<h3>筛选</h3>-->
-            <!--</a>-->
-        </div>
-    </div>
+            <!--&lt;!&ndash;&lt;!&ndash;<a href="#&amp;asideFilter" id="asideFilterTrigger" class="module-filter-icon" data-rel="asideFilter" role="button" aria-haspopup="true">&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<svg class="icon icon-filter"><use xlink:href="#icon-filter"></use></svg>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<h3>筛选</h3>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
 
 
     <!-- 分类推荐 -->
@@ -51,15 +51,12 @@
     </div>
 
 
-
-
-
-    <ol id="books-0" class="book-ol book-ol-normal jsBooks">
+    <ol id="blibliotheca_books" class="book-ol book-ol-normal jsBooks">
 
     {volist name="data" id="vo" }
         <li class="book-li">
-            <a href="/book/5679360404591301" class="book-layout">
-                <img src="__BOOKSIMG__/{$vo.books_img}" class="book-cover" >
+            <a href="{:url('/cover/index',['books_id'=>$vo.books_id])}1" class="book-layout">
+                <img src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.books_img}" class="book-cover" >
                 <div class="book-cell">
                     <div class="book-title-x">
                         <div class="book-title-r">
@@ -87,9 +84,101 @@
         </li>
 {/volist}
 
+    </ol></div>
+    <div class="module-bar jsInfiniteScroll" data-scroller-rel="" style="display: none;">正在加载中<dot>...</dot></div>
+        <a href="#header" class=" hide footer-backtop-circle jsBackToTop" title="返回顶部" style="opacity: 1; visibility: visible;display: none;"><svg class="icon icon-backtop"><use xlink:href="#icon-backtop"></use></svg></a>
 
-    <div class="module-bar jsInfiniteScroll" data-scroller-rel="" id="infiniteScroller-0">正在加载中<dot>...</dot></div>
+        <input type="hidden" name="page" value="1">
+        <input type="hidden" name="ajax_comment" value="1">
+        <input type="hidden" name="type_id" value="{$type_id}">
 
-</div>
+<script>
+    scrollBottomTest =function(){
+        $("#blibliotheca_books").scroll(function(){
+            var $this =$(this),
+                viewH =$(this).height(),//可见高度
+                contentH =$(this).get(0).scrollHeight,//内容高度
+                scrollTop =$(this).scrollTop();//滚动高度
+            //if(contentH - viewH - scrollTop <= 100) { //到达底部100px时,加载新内容
+            console.log(viewH,contentH,scrollTop);
+            if(scrollTop/(contentH -viewH)>=0.95){ //到达底部100px时,加载新内容
+                // 这里加载数据..
+                console.log("4");
+            }
+        });
+    };
 
+
+
+    //定义事件锁，防止重复请求同个章节
+    var is_running = true;
+
+    $(window).scroll(function() {
+
+        var foot = $(document).scrollTop()+1;
+
+        if ( foot >= $(document).height() - $(window).height()) {
+
+            if(is_running == true) {
+
+                is_running = false;
+
+                $(".jsInfiniteScroll").show();
+
+                var page = ($("input[name='page']").val())*1+1;
+                var ajax_comment = $("input[name='ajax_comment']").val();
+                var type_id = $("input[name='type_id']").val();
+                $.post("/bibliotheca/index",{page:page,ajax_comment:ajax_comment,type_id:type_id},function(result){
+
+                    var data = result.data.data;
+
+                    if(data.length>0) {
+                        $.each(data, function (i, e) {
+                            var html = '';
+                            var url = "/cover/index/books_id/"+e.books_id+".html";
+                            var type = "{$type[$type_id]}";
+                            if(e.books_status == 0){
+                                var status = '连载中';
+
+                            }else{
+                                var status = '完结';
+                            }
+                            html += '<li class="book-li">';
+                            html += '<a href="'+url+'" class="book-layout">';
+                            html += '<img src="__BOOKSIMG__/'+e.books_img+'" class="book-cover" >';
+                            html += '<div class="book-cell"><div class="book-title-x"><div class="book-title-r"></div>';
+                            html += ' <h4 class="book-title">'+e.books_name+'</h4>';
+                            html += '</div>';
+                            html += '<p class="book-desc"> '+e.books_synopsis+' </p>';
+                            html += ' <div class="book-meta"> <div class="book-meta-l"><span class="book-author">';
+                            html += '  <svg class="icon icon-human"><title>作者</title><use xlink:href="#icon-human"></use></svg>'+e.books_author+'</span>';
+                            html += ' </div>';
+                            html += '  <div class="book-meta-r"> <span class="tag-small-group origin-right">';
+                            html += '<em class="tag-small lightgreen">'+type+'</em><em class="tag-small lightblue">'+status+'</em>';
+                            html += ' <em class="tag-small smallblue">'+e.books_time+'</em>';
+                            html += ' </span> </div></div></div></a></li>';
+
+                            $("#blibliotheca_books").append(html);
+                        });
+
+                        $("input[name='page']").val(page);
+                        is_running = true;
+
+                    }else{
+                        $(".jsInfiniteScroll").html('已达底部');
+                    }
+                },"json");
+
+                $(".jsBackToTop").show();
+
+
+            }
+        }
+
+
+    });
+</script>
+
+
+{include file="template/imglazy" /}
 {include file="mobile/footer" }

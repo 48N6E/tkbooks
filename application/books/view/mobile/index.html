@@ -91,7 +91,7 @@
 			<ol class="book-ol book-ol-normal book-ol-small">
 				{volist name="all" id="vo" offset="26" length='4'  key="k" }
 				<li class="book-li"><a href="{:url('/cover/index',['books_id'=>$vo.books_id])}" class="book-layout">
-					<img src="__BOOKSIMG__/{$vo.books_img}" class="book-cover" >
+					<img  src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.books_img}" class="book-cover" >
 				<div class="book-cell">
 					<h5 class="module-slide-caption small-book-title">{$vo.books_name}</h5>
 					<div class="book-meta">
@@ -123,11 +123,11 @@
 			<ol class="book-ol book-ol-normal">
 				{volist name="all" id="vo" offset="34" length='4'  key="k" }
 				<li class="book-li"><a href="{:url('/cover/index',['books_id'=>$vo.books_id])}" class="book-layout">
-					<img src="__BOOKSIMG__/{$vo.books_img}" class="book-cover" alt="嫁给首长那些事儿">
+					<img  src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.books_img}" class="book-cover" >
 				<div class="book-cell">
 					<h4 class="book-title">{$vo.books_name}</h4>
 					<p class="book-desc">
-						{$all.10.books_synopsis}
+						{$vo.books_synopsis}
 					</p>
 					<div class="book-meta">
 						<div class="book-meta-l">
@@ -159,8 +159,7 @@
 				{volist name="all" id="vo" offset="88" length='4'  key="k" }
 				<li class="module-slide-li">
 					<a href="{:url('/cover/index',['books_id'=>$vo.books_id])}" class="module-slide-a">
-						<img src="__BOOKSIMG__/{$vo.books_img}" class="module-slide-img"
-						><figcaption class="module-slide-caption">{$vo.books_name}</figcaption>
+						<img  src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.books_img}" class="module-slide-img"	><figcaption class="module-slide-caption">{$vo.books_name}</figcaption>
 				<p class="module-slide-author">
 					<span class="clip">作者：</span><span class="gray">{$vo.books_author}</span>
 				</p>
@@ -188,7 +187,7 @@
 				{volist name="all" id="vo" offset="12" length='4'  key="k" }
 				<li class="module-slide-li">
 					<a href="{:url('/cover/index',['books_id'=>$vo.books_id])}" class="module-slide-a">
-						<img src="__BOOKSIMG__/{$vo.books_img}" class="module-slide-img" >
+						<img  src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.books_img}" class="module-slide-img" >
 						<figcaption class="module-slide-caption">{$vo.books_name}</figcaption>
 				<p class="module-slide-author">
 					<span class="clip">作者：</span><span class="gray">{$vo.books_author}</span>
@@ -204,7 +203,7 @@
 				{volist name="all" id="vo" offset="96" length='4'  key="k" }
 				<li class="module-slide-li">
 					<a href="{:url('/cover/index',['books_id'=>$vo.books_id])}" class="module-slide-a">
-						<img src="__BOOKSIMG__/{$vo.books_img}" class="module-slide-img" >
+						<img src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.books_img}" class="module-slide-img" >
 						<figcaption class="module-slide-caption">{$vo.books_name}</figcaption>
 						<p class="module-slide-author">
 							<span class="clip">作者：</span><span class="gray">{$vo.books_author}</span>
@@ -236,5 +235,5 @@
         });
     });
 </script>
-
+{include file="template/imglazy" /}
 {include file="mobile/footer" /}

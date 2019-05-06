@@ -85,9 +85,17 @@ class Bibliotheca extends Base
         $this->view->books_status = $books_status!=null ? $books_status : -1;
         $this->view->books_time = $books_time!=null ? $books_time : 0;
 
-
         $mobile = session('mobile');
+
+        $request     = Request::instance();
+        //如果不为空，则表明是手机版ajax请求下一页
+        $ajax_comment = input('param.ajax_comment');
+        if($request->isAjax() && !empty($ajax_comment) && !empty($mobile)){
+
+            return $this->success('请求下一页','',$data);
+        }
         if($mobile){
+
             return $this->fetch('mobile/bibliotheca_type');
         }else{
             return $this->fetch('template/bibliotheca');

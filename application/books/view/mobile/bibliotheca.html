@@ -160,7 +160,7 @@
                 <img src="__IMG__/cover.jpg" class="book-pic" alt="{$vo.type_name}">
 
                 {else /}
-                <img src="__BOOKSIMG__/{$vo.img}" class="book-pic" alt="{$vo.type_name}">
+                <img src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.img}"class="book-pic" alt="{$vo.type_name}">
 
                 {/empty}
 
@@ -179,5 +179,5 @@
 
     </ol>
 </div>
-
+{include file="template/imglazy" /}
 {include file="mobile/footer" }

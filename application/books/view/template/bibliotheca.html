@@ -59,14 +59,14 @@
                     <img class="lazy"  width="120" height="160" src="__IMG__/cover.jpg" data-src="__BOOKSIMG__/{$vo.books_img}"  style="display: block;">
                     <h3>{$vo.books_name}</h3>
                     <p class="rzz">作者：{$vo.books_author}</p>
-                    <p>{$type[$vo.books_type]}/
+                    <p>状态：
                         {eq name="$vo.books_status" value="0"}
                         连载中
                         {else/}
                         完结
                         {/eq}
-                        /65360字</p>
-                    <p class="bib_chapter">最新章节：{$vo.chapter_name}</p>
+                        </p>
+                    <p class="bib_chapter">类型：{$type[$vo.books_type]}</p>
                     <p>更新时间：{$vo.books_time}</p>
                 </a>
             </li>
